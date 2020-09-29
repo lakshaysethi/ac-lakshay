@@ -128,10 +128,20 @@ class ClassConsumer(AsyncWebsocketConsumer):
 
     # Receive a join message on connect
     async def join(self, event):
+    # Send code to WebSocket
+
+            await self.send(text_data=json.dumps({
+            'type': 'newUser',
+            'payload': event['payload'],
+            'sender': event['sender'],
+            'time': event['time']
+        }))
+
+    async def leave(self, event):
 
         # Send code to WebSocket
         await self.send(text_data=json.dumps({
-            'type': 'newUser',
+            'type': 'userLeft',
             'payload': event['payload'],
             'sender': event['sender'],
             'time': event['time']

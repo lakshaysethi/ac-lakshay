@@ -1,0 +1,497 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Consolas', Monospace;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: 0.07fr minmax(0, 2.3fr) minmax(0, 0.63fr);
+  gap: 1px 1px;
+  width: 100vw;
+  height: 100vh;
+}
+
+.grid133{
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+  "navbar navbar navbar navbar navbar navbar navbar"
+  "sidebar ec ec ec ec ec ec"
+  "terminal terminal terminal terminal terminal chat chat";
+}
+
+.grid22{
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+  "navbar navbar navbar navbar navbar navbar navbar"
+  "ec ec ec ec ec ec ec"
+  "terminal terminal terminal terminal terminal chat chat";
+}
+
+.navbar{
+  grid-area: navbar;
+  margin: 0;
+  padding: 0;
+}
+
+#hideSidebarButton{
+  position: absolute;
+  left: 0.5%;
+  top: 3px;
+}
+
+.labelLeft{
+  position: absolute;
+  left: 15%;
+  top: 3px;
+}
+
+#pauseBtn{
+  position: absolute;
+  left: 25%;
+  top: 3px;
+}
+
+.labelRight{
+  position: absolute;
+  left: 70%;
+  top: 3px;
+}
+
+#reviewBtn{
+  position: absolute;
+  left: 80%;
+  top: 3px;
+}
+.slider{
+  position: absolute;
+  width: 20%;
+  left: 45%;
+  top: 3px;
+}
+
+#helpBtn{
+  position: absolute;
+  left: 95%;
+  top: 3px;
+  width: 15px;
+}
+.sidebar { 
+  grid-area: sidebar; 
+  background-color:darkgrey;
+}
+
+.sidebar h5{
+  margin-left: 8px;
+}
+
+.listContainer {
+  margin: 3px 3px;
+  padding: 5px 5px;
+}
+
+.nameItem{
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
+.highlighted {
+  background-color: rgb(212, 53, 80) !important;
+}
+
+.editorContainer{
+  grid-area: ec;
+  display: grid;
+  gap: 1px 1px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 
+  "watch code";
+}
+
+.chat { grid-area: chat; }
+
+.code { grid-area: code; }
+
+.watch { grid-area: watch; }
+
+.textareaDiv{
+  width: 100%;
+  height: 100%;
+}
+
+textarea{ 
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  
+}
+.terminal {
+  overflow:scroll; 
+  grid-area: terminal; 
+  background-color: black;
+}
+
+.output{
+  padding: 10px;
+  margin: 20px;
+  font-family: monospace;
+  font-size: 16px;
+  color: #22da26;
+  width: 0%;
+  white-space: nowrap;
+  overflow-y: scroll;
+  animation: type 5s both;
+}
+
+@keyframes type {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+#chatContainer {
+  display: grid;
+  grid-template-columns: 1.7fr 0.3fr;
+  grid-template-rows: minmax(0, 1.8fr) 0.2fr;
+  gap: 1px 1px;
+  grid-template-areas:
+  "messagesContainer messagesContainer"
+  "inputContainer buttonContainer";
+  height: 90%;
+  width: 99%;
+  border: 1px solid black;
+}
+.messagesContainer { 
+  grid-area: messagesContainer; 
+  overflow: scroll;
+  min-width: 0 !important; min-height: 0 !important;
+}
+
+.inputContainer { 
+  grid-area: inputContainer; 
+  width: 99%;
+  height: 99%;
+}
+.buttonContainer { grid-area: buttonContainer; }
+
+#chat-message-input{
+  padding: 2px;
+  width: 99%;
+  height: 90%;
+  margin: 1px;
+}
+
+#chat-message-submit{
+  width: 99%;
+  height: 93%;
+}
+
+#messages {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#messages li {
+  padding: 5px 10px;
+}
+
+#messages li:nth-child(odd) {
+  background: #eee;
+}
+
+.timeStamp{
+  font-size: 12px;
+  color: darkgray;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.terminal::-webkit-scrollbar, .output::-webkit-scrollbar, #chat-message-input::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.output {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.center {
+  content:fill;
+  overflow:hidden;
+}
+
+.right {
+  content: fill;
+}
+
+form {
+  background: #000;
+  padding: 3px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+form input {
+  border: 0;
+  padding: 10px;
+  width: 90%;
+  margin-right: 0.5%;
+}
+
+form button {
+  width: 9%;
+  background: rgb(255, 130, 130);
+  border: none;
+  padding: 10px;
+}
+
+#messages {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#messages li {
+  padding: 1px 3px;
+}
+
+#messages li:nth-child(odd) {
+  background: #eee;
+}
+
+/* RESET RULES 
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+:root {
+  --lightgray: #efefef;
+  --blue: steelblue;
+  --white: #fff;
+  --black: rgba(0, 0, 0, 0.8);
+  --bounceEasing: cubic-bezier(0.51, 0.92, 0.24, 1.15);
+}
+
+.open-modal {
+  font-weight: bold;
+  background: var(--blue);
+  color: var(--white);
+  padding: 0.75rem 1.75rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+}
+
+.nameBtn{
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 0.20rem;
+}
+
+/* MODAL
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: var(--black);
+  cursor: pointer;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 3;
+  transition: all 0.35s ease-in;
+}
+
+.modal.is-visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modalDialog {
+  position: relative;
+  max-width: 800px;
+  max-height: 80vh;
+  border-radius: 5px;
+  background: var(--white);
+  overflow: auto;
+  cursor: default;
+}
+
+.modalDialog > * {
+  padding: 1rem;
+}
+.modalHeader {
+  background: var(--lightgray);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modalHeader .close-modal {
+  font-size: 1.5rem;
+}
+
+.modal p + p {
+  margin-top: 1rem;
+}
+
+#nameInput{
+  height: 27px;
+}
+
+/* ANIMATIONS
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+[data-animation] .modalDialog {
+  opacity: 0;
+  transition: all 0.5s var(--bounceEasing);
+}
+
+[data-animation].is-visible .modalDialog {
+  opacity: 1;
+  transition-delay: 0.2s;
+}
+
+[data-animation="slideInOutLeft"] .modalDialog {
+  transform: translateX(-100%);
+}
+
+[data-animation="slideInOutLeft"].is-visible .modalDialog
+{
+  transform: none;
+}
+
+
+/* The Overlay (background) */
+.overlay {
+  /* Height & width depends on how you want to reveal the overlay (see JS below) */
+  height: 0%;
+  width: 100%;
+  position: fixed; /* Stay in place */
+  z-index: 4; /* Sit on top */
+  left: 0;
+  top: 0;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+  position: relative;
+  width: 100%; /* 100% width */
+  height: 100%; /* 100% width */
+  text-align: center; /* Centered text/links */
+}
+
+/* The navigation links inside the overlay */
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: white;
+  display: block; /* Display block instead of inline */
+}
+
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+  position: absolute;
+  z-index: 5;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+@media screen and (max-height: 450px) {
+  .overlay a {
+    font-size: 20px;
+  }
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+/* OVERLAY GRID ~~~~~~~~~~~~~~~~~~~~~~~~~~~<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+.ocontainer {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.3fr 2.3fr 0.4fr;
+  grid-template-areas:
+    ". onavbar onavbar onavbar onavbar onavbar onavbar"
+    "osidebar oec oec oec oec oec oec"
+    "oterminal oterminal oterminal oterminal oterminal ochat ochat";
+  align-items: center;
+}
+
+.onavbar {
+  grid-area: onavbar;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  justify-content: space-around;
+  grid-template-rows: 0.1fr 0.9fr;
+  grid-template-columns: 1fr 1fr 1fr 0.3fr;
+  grid-template-areas:
+    "ht ht ht ."
+    "htl htm htr .";
+}
+
+.helpTopLeft {
+  grid-area: htl;
+  width: 80%;
+}
+
+.helpTopRight {
+  grid-area: htr;
+  width: 80%;
+}
+
+.helpTopTitle {
+  grid-area: ht;
+}
+
+.helpTopMiddle {
+  grid-area: htm;
+  width: 80%;
+}
+
+.osidebar {
+  grid-area: osidebar;
+}
+
+.oec {
+  grid-area: oec;
+  display: grid;
+  gap: 1px 1px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "owatch ocode";
+}
+
+.ocode {
+  grid-area: ocode;
+}
+
+.owatch {
+  grid-area: owatch;
+}
+
+.ochat {
+  grid-area: ochat;
+}
+.oterminal {
+  grid-area: oterminal;
+}
