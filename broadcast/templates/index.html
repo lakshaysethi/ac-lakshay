@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AirCode: Livestream code</title>
+    <meta name="description" content="Livestream code to multiple users with low bandwidth usage">
+
+    <!-- Bootstrap CDN links -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            
+            <div class="col-xl-12  m-5 text-xl-center">
+                <div class="d-flex justify-content-end">
+                    <!-- <button type="button" class="m-3 btn  btn-secondary shadow-lg invisible" id="switch">Dark mode</button> -->
+                  </div>
+              
+                <div class="heading">
+                    <h1>Welcome to AirCode</h1>
+
+                </div>
+                <div class="subheading m-5">
+                    <h3>Livestream code to multiple users</h3>
+                    <br>
+                    <h4>Are you a teacher or a student?</h4>
+                    {%if cc%}
+                    <button onclick="enterClass('{{cc}}','teacher')" type="button" class="m-3 btn btn-lg btn-success shadow-lg" id="teacherBtn">Teacher</button>
+                    <button onclick="enterClass('{{cc}}','student')" type="button" class="m-3 btn btn-lg btn-danger shadow-lg" id="studentBtn">Student</button>
+                    {%else%}
+                    <button onclick="promptForClassName('teacher')" type="button" class="m-3 btn btn-lg btn-success shadow-lg" id="teacherBtn">Teacher</button>
+                    <button onclick="promptForClassName('student')" type="button" class="m-3 btn btn-lg btn-danger shadow-lg" id="studentBtn">Student</button>
+                    {%endif%}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'components/common.html'%}
+</body>
+</html>

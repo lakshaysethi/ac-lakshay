@@ -1,0 +1,96 @@
+<script>
+    var className = '{{cc}}';
+    
+    
+    function promptForClassName(role){
+        $('#classNameModal').modal('show')
+        $("#classnameinput").focus();
+        $('#role').text(role)
+        
+    }
+    
+    
+    function enterClass(code,role){
+        code +='/'
+        className = code
+        localStorage.setItem("classCode", code);
+        window.open(window.location.origin +'/' +code+role); 
+    }
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+        if(!className){
+            if(!localStorage){
+                className = '{{cc}}/'
+            }    
+        }else if(localStorage.getItem("classCode") != undefined){ 
+            className = localStorage.getItem("classCode"); 
+
+        }
+
+        $("<div class='classNameHeadding'></div>").html(`<h5> class code: ${className.slice(0,className.length-1)}</h5>`).prependTo(".sidebar");
+
+        if(document.getElementById("chat-log")){
+            document.getElementById("chat-log").setAttribute("disabled","true")
+
+        }
+
+        // $("<label>Teacher's Code</label>").prependTo(".watch")
+        // $("<label>Student's Code</label>").prependTo(".code")
+        // $("<br><label>Chat</label>").prependTo(".chat")
+
+        $("<label style ='color:green'>Terminal</label>").prependTo(".terminal")
+        $(".terminal button").on("click",function(){
+            $("#output").text("")
+        })
+    });
+
+    function hideSidebar() {
+        let sb = document.getElementById("sidebar");
+        let rg = document.getElementById("rootGrid");
+        if (sb.style.display === "none") {
+            sb.style.display = "block";
+        } else {
+            sb.style.display = "none";
+        }
+        rg.classList.toggle('grid133');
+        rg.classList.toggle('grid22');
+    }
+
+    slider = document.getElementById('slider');
+    slider.addEventListener('change', function(){
+        var val = slider.value/100; var g1 = 1+val;
+        val2 = (1-val); var g2 = 1+val2;
+        document.getElementById("ec").style.gridTemplateColumns = `${g1}fr ${g2}fr`;
+    })
+
+    function openHelp() {
+        document.getElementById("helpOverlay").style.height = "100%";
+    }
+
+    function closeHelp() {
+        document.getElementById("helpOverlay").style.height = "0%";
+    }
+</script>
+
+
+<div style="display:none" id="role">student</div>
+
+<div id="classNameModal" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="classNameModalLabel" >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="classNameModalLabel" >Please enter Classs Code</h5>
+                
+            </div>
+            <form onsubmit="enterClass($('#classnameinput').val(),$('#role').text());return false" >
+                <div class="modal-body">
+                    <label for="classnameinput">Class Code</label>
+                    <input pattern="^[A-Za-z0-9]{1,6}$" title="no special chars and no spaces- max 6 chars" required id="classnameinput" type="text">
+                </div>
+                <div class="modal-footer">
+                    <button type='submit'  type="button" class="btn btn-primary">Enter Class</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
